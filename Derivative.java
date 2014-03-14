@@ -141,7 +141,7 @@ public class Derivative {
 	/*
 	 * 总处理函数
 	 */
-	public int[] process(int[] ecg){
+	public void process(int[] ecg){
 		N_buf = ecg.length;
 		//输出数组
 		int[] out = new int[N_buf];
@@ -199,7 +199,6 @@ public class Derivative {
 			
 			out[i] = sum;
 		}
-		return out;
 	}
 	
 	

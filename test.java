@@ -10,6 +10,7 @@ import java.io.OutputStream;
 public class test {
 	public static final int N_buf = 20;
 	private static Derivative derivative = new Derivative();
+	private static Filter filter = new Filter();
 	
 	/*
 	 * 从文件读数据
@@ -48,12 +49,12 @@ public class test {
 		for(int j=0; j<500; j++){
 			//输入
 			readfile(in, input_buffer);
-			
 			//差分法QRS
-			output_buffer = derivative.process(input_buffer);
-			
+			derivative.process(input_buffer);
+			//滤波
+			output_buffer = filter.highpass(input_buffer);
 			//输出
-			writefile(out, output_buffer);
+			writefile(out,output_buffer);
 		}
 	}
 }
